@@ -20,7 +20,7 @@
 
 			<div class="griglia-categorie">
 
-				<a href="pasticceria.html" class="scheda-categoria">
+				<a href="pasticceria.php" class="scheda-categoria">
 					<img src="../CartellaImage/pasticceria.jpg" alt="La nostra pasticceria">
 
 					<div class="contenuto-categoria">
@@ -34,7 +34,7 @@
 					</div>
 				</a>
 
-				<a href="vini.html" class="scheda-categoria">
+				<a href="vini.php" class="scheda-categoria">
 					<img src="../CartellaImage/vino.jpg" alt="I nostri vini">
 
 					<div class="contenuto-categoria">
@@ -48,7 +48,7 @@
 					</div>
 				</a>
 
-				<a href="gourmet.html" class="scheda-categoria">
+				<a href="gourmet.php" class="scheda-categoria">
 					<img src="../CartellaImage/gourmet.jpg" alt="Prodotti gourmet">
 
 					<div class="contenuto-categoria">
