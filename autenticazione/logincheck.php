@@ -4,34 +4,30 @@ require_once("connect.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $email = $_POST["email"];
+    $email    = $_POST["email"];
     $password = $_POST["password"];
 
-    $sql = "SELECT * FROM UTENTE 
-            WHERE Email = :email AND Password = :password";
-
+    $sql = "SELECT * FROM UTENTE WHERE Email = :email";
     $sth = $conn->prepare($sql);
-
-    $sth->execute([
-        ":email" => $email,
-        ":password" => $password
-    ]);
-
+    $sth->execute([":email" => $email]);
     $utente = $sth->fetch(PDO::FETCH_ASSOC);
 
-    if ($utente) {
+    if ($utente && password_verify($password, $utente["Password"])) {
 
         $_SESSION["idUtente"] = $utente["IdUtente"];
-        $_SESSION["nome"] = $utente["Nome"];
-        $_SESSION["ruolo"] = $utente["Ruolo"];
+        $_SESSION["nome"]     = $utente["Nome"];
+        $_SESSION["ruolo"]    = $utente["Ruolo"];
 
-        header("Location: index.html");
+        if ($utente["Ruolo"] === "admin") {
+            header("Location: ../paginephp/statistiche.php");
+        } else {
+            header("Location: ../index.php");
+        }
         exit();
 
     } else {
-
-        echo "Email o password errate";
-
+        header("Location: login.php?errore=1");
+        exit();
     }
 }
 ?>
