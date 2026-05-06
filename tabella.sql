@@ -1,4 +1,4 @@
--- Active: 1760690350642@@127.0.0.1@3306@finalproject
+-- Active: 1771240308180@@127.0.0.1@3306@finalproject
 DROP DATABASE IF EXISTS finalproject;
 CREATE DATABASE finalproject;
 USE finalproject;
@@ -52,7 +52,7 @@ CREATE TABLE INGREDIENTE (
   Nome VARCHAR(255),
   PRIMARY KEY (IdIngrediente)
 );
- 
+
 CREATE TABLE PIATTO_INGREDIENTE (
   IdPiatto INT,
   IdIngrediente INT,
@@ -101,6 +101,7 @@ CREATE TABLE RECENSIONE (
   Voto INT,
   Data DATE,
   Testo TEXT,
+  RispostaAdmin TEXT NULL,
   PRIMARY KEY (IdRecensione),
   FOREIGN KEY (IdUtente) REFERENCES UTENTE(IdUtente),
   FOREIGN KEY (IdPiatto) REFERENCES PIATTO(IdPiatto)
@@ -116,49 +117,36 @@ CREATE TABLE PRODOTTO (
   FOREIGN KEY (IdRistorante) REFERENCES RISTORANTE(IdRistorante)
 );
 
+-- --------------------------------------------------------
+
 INSERT INTO RISTORANTE (Nome, Email, Telefono, Citta, Via)
 VALUES ('La Maison', 'info@lamaison.it', '023456789', 'Milano', 'Via Eleganza 10');
 
-INSERT INTO UTENTE
-(Nome, Cognome, Email, Password, CAP, DataNascita, Provincia, Ruolo)
+INSERT INTO UTENTE (Nome, Cognome, Email, Password, CAP, DataNascita, Provincia, Ruolo)
 VALUES
-('Mario', 'Rossi', 'mario@demo.it', '1234', '20100', '2000-05-10', 'MI', 'cliente'),
-('Luca', 'Bianchi', 'luca@demo.it', 'abcd', '00100', '1999-11-22', 'RM', 'cliente'),
+('Mario', 'Rossi',    'mario@demo.it',     '1234',     '20100', '2000-05-10', 'MI', 'cliente'),
+('Luca',  'Bianchi',  'luca@demo.it',      'abcd',     '00100', '1999-11-22', 'RM', 'cliente'),
 ('Admin', 'LaMaison', 'admin@lamaison.it', 'admin123', '20100', '1990-01-01', 'MI', 'admin');
 
 INSERT INTO MENU (IdRistorante, Categoria, Materiale, Grandezza)
 VALUES
 (1, 'Degustazione', 'Carta', 'Grande'),
-(1, 'Alla carta', 'Carta', 'Standard');
+(1, 'Alla carta',   'Carta', 'Standard');
 
 INSERT INTO PIATTO (IdMenu, Nome, Descrizione, Prezzo)
 VALUES
-(1, 'Risotto allo Zafferano', 'Risotto cremoso con zafferano', 18.00),
-(1, 'Filetto di Manzo', 'Filetto di manzo con salsa al vino rosso', 28.00),
-(2, 'Spaghetti al Pomodoro', 'Spaghetti con pomodoro fresco', 12.00),
-(2, 'Tiramisù', 'Dolce tradizionale italiano', 8.00);
+(1, 'Risotto allo Zafferano', 'Risotto cremoso con zafferano',            18.00),
+(1, 'Filetto di Manzo',       'Filetto di manzo con salsa al vino rosso', 28.00),
+(2, 'Spaghetti al Pomodoro',  'Spaghetti con pomodoro fresco',            12.00),
+(2, 'Tiramisù',               'Dolce tradizionale italiano',               8.00);
 
 INSERT INTO INGREDIENTE (Nome)
 VALUES
-('Riso'),
-('Zafferano'),
-('Manzo'),
-('Vino Rosso'),
-('Pomodoro'),
-('Pasta'),
-('Mascarpone'),
-('Uova');
+('Riso'), ('Zafferano'), ('Manzo'), ('Vino Rosso'),
+('Pomodoro'), ('Pasta'), ('Mascarpone'), ('Uova');
 
 INSERT INTO PIATTO_INGREDIENTE (IdPiatto, IdIngrediente)
-VALUES
-(1, 1),
-(1, 2),
-(2, 3),
-(2, 4),
-(3, 5),
-(3, 6),
-(4, 7),
-(4, 8);
+VALUES (1,1),(1,2),(2,3),(2,4),(3,5),(3,6),(4,7),(4,8);
 
 INSERT INTO TAVOLO (IdRistorante, NumeroTavolo, Materiale, Stato)
 VALUES
@@ -168,27 +156,24 @@ VALUES
 
 INSERT INTO ORARIO (IdRistorante, GiornoSett, OrarioApertura, OrarioChiusura)
 VALUES
-(1, 'Lunedì', '12:00:00', '23:00:00'),
-(1, 'Martedì', '12:00:00', '23:00:00'),
+(1, 'Lunedì',    '12:00:00', '23:00:00'),
+(1, 'Martedì',   '12:00:00', '23:00:00'),
 (1, 'Mercoledì', '12:00:00', '23:00:00'),
-(1, 'Giovedì', '12:00:00', '23:00:00'),
-(1, 'Venerdì', '12:00:00', '00:00:00'),
-(1, 'Sabato', '18:00:00', '00:00:00');
+(1, 'Giovedì',   '12:00:00', '23:00:00'),
+(1, 'Venerdì',   '12:00:00', '00:00:00'),
+(1, 'Sabato',    '18:00:00', '00:00:00');
 
-INSERT INTO PRENOTAZIONE
-(IdUtente, IdTavolo, DataPrenot, OraPrenot, NumeroPersone, Nominativo)
+INSERT INTO PRENOTAZIONE (IdUtente, IdTavolo, DataPrenot, OraPrenot, NumeroPersone, Nominativo)
 VALUES
 (1, 2, '2026-03-10', '20:00:00', 4, 'Mario Rossi'),
 (2, 1, '2026-03-11', '21:00:00', 2, 'Luca Bianchi');
 
-INSERT INTO RECENSIONE
-(IdUtente, IdPiatto, Voto, Data, Testo)
+INSERT INTO RECENSIONE (IdUtente, IdPiatto, Voto, Data, Testo, RispostaAdmin)
 VALUES
-(1, 1, 5, '2026-03-01', 'Risotto eccezionale, molto cremoso.'),
-(2, 4, 4, '2026-03-02', 'Tiramisù ottimo, molto delicato.');
+(1, 1, 5, '2026-03-01', 'Risotto eccezionale, molto cremoso.', NULL),
+(2, 4, 4, '2026-03-02', 'Tiramisù ottimo, molto delicato.',    NULL);
 
-INSERT INTO PRODOTTO
-(IdRistorante, Nome, Descrizione, Prezzo)
+INSERT INTO PRODOTTO (IdRistorante, Nome, Descrizione, Prezzo)
 VALUES
 (1, 'Bottiglia di Vino Rosso', 'Vino selezionato della casa', 22.00),
-(1, 'Olio Extravergine', 'Olio EVO artigianale', 15.00);
+(1, 'Olio Extravergine',       'Olio EVO artigianale',        15.00);
