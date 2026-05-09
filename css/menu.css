@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.pagina-menu {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 120px 24px 100px;
+}
+
+.menu-etichetta {
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #a98552;
+    margin-bottom: 12px;
+}
+
+.menu-titolo {
+    font-family: Georgia, serif;
+    font-size: 56px;
+    font-weight: 400;
+    text-align: center;
+    color: #181412;
+}
+
+.menu-titolo::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: #c2a06e;
+    margin: 18px auto 0;
+}
+
+.menu-intro {
+    max-width: 680px;
+    margin: 28px auto 60px;
+    text-align: center;
+    font-size: 17px;
+    line-height: 1.9;
+    color: #6a5f54;
+}
+
+.piatti-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.piatto-card {
+    background: #ffffff;
+    border: 1px solid #e8dfd3;
+    padding: 24px 28px;
+    transition: box-shadow 0.2s;
+}
+
+.piatto-card:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+
+.piatto-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+    gap: 16px;
+}
+
+.piatto-nome {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #181412;
+    flex: 1;
+}
+
+.piatto-prezzo {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    color: #c2a06e;
+    white-space: nowrap;
+}
+
+.piatto-descrizione {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #6a5f54;
+}
+
+.menu-vuoto {
+    text-align: center;
+    color: #a98552;
+    font-style: italic;
+    padding: 40px 0;
+}
+
+@media (max-width: 600px) {
+    .menu-titolo { font-size: 38px; }
+    .piatto-card { padding: 20px; }
+    .pagina-menu { padding: 100px 16px 80px; }
+}

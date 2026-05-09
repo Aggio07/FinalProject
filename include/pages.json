@@ -1,0 +1,34 @@
+{
+    "name": "La Maison",
+    "userpages": [
+        "shop.php",
+        "vini.php",
+        "pasticceria.php",
+        "gourmet.php",
+        "menu.php",
+        "recensioni.php",
+        "chiSiamo.php",
+        "storia.php",
+        "prenotaTavolo.php"
+    ],
+    "adminpages": [
+        "statistiche.php",
+        "gestisciRecensioni.php"
+    ],
+    "loggedInPages": [
+        "prenotaTavolo.php",
+        "statistiche.php",
+        "gestisciRecensioni.php"
+    ],
+    "DBPages": [
+        "shop.php",
+        "vini.php",
+        "pasticceria.php",
+        "gourmet.php",
+        "menu.php",
+        "recensioni.php",
+        "prenotaTavolo.php",
+        "statistiche.php",
+        "gestisciRecensioni.php"
+    ]
+}
