@@ -97,9 +97,3 @@
     font-style: italic;
     padding: 40px 0;
 }
-
-@media (max-width: 600px) {
-    .menu-titolo { font-size: 38px; }
-    .piatto-card { padding: 20px; }
-    .pagina-menu { padding: 100px 16px 80px; }
-}

@@ -264,12 +264,3 @@ body {
 .risposta-btn:hover {
     background: #a98552;
 }
-
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-    .stat-grid-simple { grid-template-columns: 1fr; }
-    .admin-titolo { font-size: 32px; }
-    .admin-wrapper { padding: 90px 16px 60px; }
-    .form-risposta { flex-direction: column; }
-    .risposta-btn { width: 100%; }
-}

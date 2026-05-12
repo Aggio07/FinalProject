@@ -205,9 +205,3 @@
     color: #a98552;
     border-color: #a98552;
 }
-
-@media (max-width: 600px) {
-    .rec-titolo { font-size: 38px; }
-    .rec-card { padding: 20px; }
-    .pagina-recensioni { padding: 100px 16px 80px; }
-}
