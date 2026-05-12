@@ -17,7 +17,6 @@
     <ul class="navbar-links">
         <li><a href="../index.php">Home</a></li>
         <li><a href="menu.php">Menù</a></li>
-        <li><a href="prenotaTavolo.php">Prenota</a></li>
         <li><a href="recensioni.php">Recensioni</a></li>
         <li><a href="shop.php" class="attivo">Negozio</a></li>
     </ul>
@@ -29,25 +28,7 @@
             <a href="../autenticazione/login.php" class="navbar-btn">Accedi</a>
         <?php endif; ?>
     </div>
-    <button class="navbar-hamburger" id="hamburger">☰</button>
 </nav>
-
-<div class="mobile-overlay" id="mobileOverlay">
-    <nav class="mobile-menu">
-        <a href="../index.php">Home</a>
-        <a href="menu.php">Menù</a>
-        <a href="prenotaTavolo.php">Prenota</a>
-        <a href="recensioni.php">Recensioni</a>
-        <a href="shop.php">Negozio</a>
-        <hr>
-        <?php if (isset($_SESSION['idUtente'])): ?>
-            <a href="../autenticazione/logout.php">Esci</a>
-        <?php else: ?>
-            <a href="../autenticazione/login.php">Accedi</a>
-        <?php endif; ?>
-        <button id="chiudiMobile">Chiudi</button>
-    </nav>
-</div>
 
 <div class="hero-pagina" style="background-image: url('../CartellaImage/gourmet.jpg')">
     <div class="hero-pagina-testo">
@@ -76,7 +57,6 @@
                 <p>Olio EVO artigianale dal gusto equilibrato.</p>
                 <div class="prodotto-footer">
                     <span class="prezzo">15 €</span>
-                    <a class="bottone-shop">Scopri</a>
                 </div>
             </div>
         </div>
@@ -88,7 +68,6 @@
                 <p>Pasta prodotta con grani selezionati.</p>
                 <div class="prodotto-footer">
                     <span class="prezzo">8 €</span>
-                    <a class="bottone-shop">Scopri</a>
                 </div>
             </div>
         </div>
@@ -100,7 +79,6 @@
                 <p>Sugo artigianale preparato con pomodoro fresco.</p>
                 <div class="prodotto-footer">
                     <span class="prezzo">7 €</span>
-                    <a class="bottone-shop">Scopri</a>
                 </div>
             </div>
         </div>
@@ -112,7 +90,6 @@
                 <p>Ideale per risotti cremosi e ricette della tradizione.</p>
                 <div class="prodotto-footer">
                     <span class="prezzo">9 €</span>
-                    <a class="bottone-shop">Scopri</a>
                 </div>
             </div>
         </div>
@@ -124,7 +101,6 @@
                 <p>Miscela profumata per completare piatti e degustazioni.</p>
                 <div class="prodotto-footer">
                     <span class="prezzo">6 €</span>
-                    <a class="bottone-shop">Scopri</a>
                 </div>
             </div>
         </div>
@@ -136,7 +112,6 @@
                 <p>Preparata con frutta selezionata e cottura lenta.</p>
                 <div class="prodotto-footer">
                     <span class="prezzo">8 €</span>
-                    <a class="bottone-shop">Scopri</a>
                 </div>
             </div>
         </div>
@@ -160,7 +135,6 @@
             <p class="footer-titolo">Il ristorante</p>
             <a href="chiSiamo.php">Chi siamo</a>
             <a href="menu.php">Il menù</a>
-            <a href="prenotaTavolo.php">Prenota</a>
         </div>
         <div class="footer-col">
             <p class="footer-titolo">Shop</p>
@@ -179,15 +153,6 @@
         <p>© <?= date('Y') ?> La Maison. Tutti i diritti riservati.</p>
     </div>
 </footer>
-
-<script>
-    document.getElementById('hamburger').addEventListener('click', () => {
-        document.getElementById('mobileOverlay').classList.add('attivo');
-    });
-    document.getElementById('chiudiMobile').addEventListener('click', () => {
-        document.getElementById('mobileOverlay').classList.remove('attivo');
-    });
-</script>
 
 </body>
 </html>

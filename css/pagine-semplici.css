@@ -1,0 +1,134 @@
+/* HERO PAGINA */
+.pagina-hero {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.pagina-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5);
+}
+
+.pagina-hero-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    width: 100%;
+}
+
+.pagina-hero .etichetta-pagina {
+    font-size: 12px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: #c2a06e;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.pagina-hero .titolo-pagina {
+    font-family: Georgia, serif;
+    font-size: 72px;
+    font-weight: 400;
+    color: white;
+    margin: 0;
+    text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+}
+
+/* CONTENITORE */
+.contenitore-pagina {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 100px 50px 120px;
+    background: #f6f1ea;
+}
+
+/* INTRO GRANDE */
+.intro-grande {
+    font-size: 28px;
+    line-height: 1.5;
+    color: #181412;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 300;
+}
+
+/* DIVISORE ORO */
+.divisore-oro {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, transparent, #c2a06e, transparent);
+    margin: 50px auto 70px;
+}
+
+/* TESTO CORPO */
+.testo-corpo {
+    font-size: 18px;
+    line-height: 2;
+    color: #6a5f54;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.testo-corpo p {
+    margin-bottom: 32px;
+}
+
+.testo-corpo p:last-child {
+    margin-bottom: 0;
+}
+
+/* LISTA CHEF */
+.chef-lista {
+    margin-top: 80px;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.chef-item {
+    margin-bottom: 80px;
+    padding-bottom: 80px;
+    border-bottom: 1px solid rgba(194, 160, 110, 0.2);
+}
+
+.chef-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.chef-nome {
+    font-family: Georgia, serif;
+    font-size: 36px;
+    font-weight: 400;
+    color: #181412;
+    margin-bottom: 16px;
+}
+
+.chef-ruolo {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: #c2a06e;
+    margin-bottom: 28px;
+    font-weight: 600;
+    display: inline-block;
+    border-bottom: 2px solid #c2a06e;
+    padding-bottom: 8px;
+}
+
+.chef-bio {
+    font-size: 18px;
+    line-height: 2;
+    color: #6a5f54;
+    margin: 0;
+}

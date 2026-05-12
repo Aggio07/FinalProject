@@ -17,7 +17,6 @@
         <ul class="navbar-links">
             <li><a href="index.php" class="attivo">Home</a></li>
             <li><a href="paginephp/menu.php">Menù</a></li>
-            <li><a href="paginephp/prenotaTavolo.php">Prenota</a></li>
             <li><a href="paginephp/recensioni.php">Recensioni</a></li>
             <li><a href="paginephp/shop.php">Negozio</a></li>
         </ul>
@@ -32,26 +31,7 @@
                 <a href="autenticazione/login.php" class="navbar-btn">Accedi</a>
             <?php endif; ?>
         </div>
-        <button class="navbar-hamburger" id="hamburger">☰</button>
     </nav>
-
-    <!-- MENU MOBILE -->
-    <div class="mobile-overlay" id="mobileOverlay">
-        <nav class="mobile-menu">
-            <a href="index.php">Home</a>
-            <a href="paginephp/menu.php">Menù</a>
-            <a href="paginephp/prenotaTavolo.php">Prenota</a>
-            <a href="paginephp/recensioni.php">Recensioni</a>
-            <a href="paginephp/shop.php">Negozio</a>
-            <hr>
-            <?php if (isset($_SESSION['idUtente'])): ?>
-                <a href="autenticazione/logout.php">Esci</a>
-            <?php else: ?>
-                <a href="autenticazione/login.php">Accedi</a>
-            <?php endif; ?>
-            <button id="chiudiMobile">Chiudi</button>
-        </nav>
-    </div>
 
     <!-- HERO -->
     <section class="hero">
@@ -60,7 +40,6 @@
             <h1>Un'esperienza<br>indimenticabile</h1>
             <p class="hero-sub">L'incontro dei sapori più pregiati</p>
             <div class="hero-cta">
-                <a href="paginephp/prenotaTavolo.php" class="btn-gold">Prenota un tavolo</a>
                 <a href="paginephp/menu.php" class="btn-outline">Scopri il menù</a>
             </div>
         </div>
@@ -78,7 +57,6 @@
             <div class="divisore"></div>
             <p>La Maison nasce nel cuore di Milano come luogo dove la tradizione italiana incontra l'eleganza contemporanea. Ogni piatto racconta una storia, ogni ingrediente è scelto con cura dai migliori produttori locali.</p>
             <p>Dalla fondazione ad oggi, il nostro impegno è rimasto invariato: offrire un'esperienza gastronomica che resti nel ricordo di chi ci sceglie.</p>
-            <a href="paginephp/chiSiamo.php" class="link-testo">Chi siamo →</a>
         </div>
         <div class="split-immagine">
             <img src="CartellaImage/sfondohome.jpg" alt="La Maison - Il ristorante">
@@ -135,7 +113,7 @@
         </div>
         <div class="esperienze-grid">
 
-            <a href="paginephp/menu.php" class="exp-card">
+            <a href="paginephp/laSala.php" class="exp-card">
                 <div class="exp-img" style="background-image:url('CartellaImage/sfondohome.jpg')"></div>
                 <div class="exp-body">
                     <p class="etichetta">Ristorazione</p>
@@ -144,21 +122,21 @@
                 </div>
             </a>
 
-            <a href="paginephp/chiSiamo.php" class="exp-card">
+            <a href="paginephp/nostriChef.php" class="exp-card">
                 <div class="exp-img" style="background-image:url('CartellaImage/chef.jpg')"></div>
                 <div class="exp-body">
                     <p class="etichetta">La brigata</p>
                     <h3>I nostri chef</h3>
-                    <p>Talento, passione e tecnica: scopri le persone che ogni giorno danno vita alla cucina La Maison.</p>
+                    <p>Talento, passione e tecnica al servizio della cucina.</p>
                 </div>
             </a>
 
-            <a href="paginephp/prenotaTavolo.php" class="exp-card">
+            <a href="paginephp/recensioni.php" class="exp-card">
                 <div class="exp-img" style="background-image:url('CartellaImage/occasioni.jpg')"></div>
                 <div class="exp-body">
-                    <p class="etichetta">Momenti speciali</p>
-                    <h3>Occasioni speciali</h3>
-                    <p>Compleanni, anniversari, cene di lavoro: affidaci il tuo momento e lo renderemo indimenticabile.</p>
+                    <p class="etichetta">Esperienze</p>
+                    <h3>Recensioni</h3>
+                    <p>Scopri cosa dicono i nostri clienti dell'esperienza La Maison.</p>
                 </div>
             </a>
 
@@ -175,10 +153,10 @@
             </div>
             <div class="footer-col">
                 <p class="footer-titolo">Il ristorante</p>
-                <a href="paginephp/chiSiamo.php">Chi siamo</a>
-                <a href="paginephp/storia.php">La nostra storia</a>
+                <a href="paginephp/laSala.php">La sala</a>
+                <a href="paginephp/nostriChef.php">I nostri chef</a>
                 <a href="paginephp/menu.php">Il menù</a>
-                <a href="paginephp/prenotaTavolo.php">Prenota un tavolo</a>
+                <a href="paginephp/recensioni.php">Recensioni</a>
             </div>
             <div class="footer-col">
                 <p class="footer-titolo">Esplora</p>
@@ -191,7 +169,6 @@
                 <p class="footer-titolo">Account</p>
                 <a href="autenticazione/login.php">Accedi</a>
                 <a href="autenticazione/signup.php">Registrati</a>
-                <a href="paginephp/recensioni.php">Recensioni</a>
             </div>
         </div>
         <div class="footer-bottom">
@@ -203,12 +180,6 @@
         const navbar = document.getElementById('navbar');
         window.addEventListener('scroll', () => {
             navbar.classList.toggle('scrolled', window.scrollY > 60);
-        });
-        document.getElementById('hamburger').addEventListener('click', () => {
-            document.getElementById('mobileOverlay').classList.add('attivo');
-        });
-        document.getElementById('chiudiMobile').addEventListener('click', () => {
-            document.getElementById('mobileOverlay').classList.remove('attivo');
         });
     </script>
 

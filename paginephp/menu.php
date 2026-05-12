@@ -1,7 +1,10 @@
 <?php
 $pdo = DBHandler::getPDO();
 
-$piatti = $pdo->query("SELECT Nome, Descrizione, Prezzo FROM PIATTO ORDER BY Prezzo")->fetchAll();
+$antipasti = $pdo->query("SELECT Nome, Descrizione, Prezzo FROM PIATTO WHERE Tipo = 'Antipasto' ORDER BY Prezzo")->fetchAll();
+$primi = $pdo->query("SELECT Nome, Descrizione, Prezzo FROM PIATTO WHERE Tipo = 'Primo' ORDER BY Prezzo")->fetchAll();
+$secondi = $pdo->query("SELECT Nome, Descrizione, Prezzo FROM PIATTO WHERE Tipo = 'Secondo' ORDER BY Prezzo")->fetchAll();
+$dolci = $pdo->query("SELECT Nome, Descrizione, Prezzo FROM PIATTO WHERE Tipo = 'Dolce' ORDER BY Prezzo")->fetchAll();
 ?>
 
 <link rel="stylesheet" href="../css/menu.css">
@@ -15,21 +18,77 @@ $piatti = $pdo->query("SELECT Nome, Descrizione, Prezzo FROM PIATTO ORDER BY Pre
         Una selezione di piatti della tradizione italiana preparati con ingredienti freschi e di qualità.
     </p>
 
-    <div class="piatti-lista">
-        <?php if (empty($piatti)): ?>
-            <p class="menu-vuoto">Nessun piatto disponibile al momento.</p>
-        <?php endif; ?>
-
-        <?php foreach ($piatti as $piatto): ?>
-        <div class="piatto-card">
-            <div class="piatto-header">
-                <h3 class="piatto-nome"><?= htmlspecialchars($piatto['Nome']) ?></h3>
-                <span class="piatto-prezzo"><?= number_format($piatto['Prezzo'], 2) ?> €</span>
+    <!-- ANTIPASTI -->
+    <?php if (!empty($antipasti)): ?>
+    <div class="menu-sezione">
+        <h2 class="menu-categoria">Antipasti</h2>
+        <div class="piatti-lista">
+            <?php foreach ($antipasti as $p): ?>
+            <div class="piatto-card">
+                <div class="piatto-header">
+                    <h3 class="piatto-nome"><?= htmlspecialchars($p['Nome']) ?></h3>
+                    <span class="piatto-prezzo"><?= number_format($p['Prezzo'], 2) ?> €</span>
+                </div>
+                <p class="piatto-descrizione"><?= htmlspecialchars($p['Descrizione']) ?></p>
             </div>
-            <p class="piatto-descrizione"><?= htmlspecialchars($piatto['Descrizione']) ?></p>
+            <?php endforeach; ?>
         </div>
-        <?php endforeach; ?>
     </div>
+    <?php endif; ?>
+
+    <!-- PRIMI -->
+    <?php if (!empty($primi)): ?>
+    <div class="menu-sezione">
+        <h2 class="menu-categoria">Primi Piatti</h2>
+        <div class="piatti-lista">
+            <?php foreach ($primi as $p): ?>
+            <div class="piatto-card">
+                <div class="piatto-header">
+                    <h3 class="piatto-nome"><?= htmlspecialchars($p['Nome']) ?></h3>
+                    <span class="piatto-prezzo"><?= number_format($p['Prezzo'], 2) ?> €</span>
+                </div>
+                <p class="piatto-descrizione"><?= htmlspecialchars($p['Descrizione']) ?></p>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <!-- SECONDI -->
+    <?php if (!empty($secondi)): ?>
+    <div class="menu-sezione">
+        <h2 class="menu-categoria">Secondi Piatti</h2>
+        <div class="piatti-lista">
+            <?php foreach ($secondi as $p): ?>
+            <div class="piatto-card">
+                <div class="piatto-header">
+                    <h3 class="piatto-nome"><?= htmlspecialchars($p['Nome']) ?></h3>
+                    <span class="piatto-prezzo"><?= number_format($p['Prezzo'], 2) ?> €</span>
+                </div>
+                <p class="piatto-descrizione"><?= htmlspecialchars($p['Descrizione']) ?></p>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <!-- DOLCI -->
+    <?php if (!empty($dolci)): ?>
+    <div class="menu-sezione">
+        <h2 class="menu-categoria">Dolci</h2>
+        <div class="piatti-lista">
+            <?php foreach ($dolci as $p): ?>
+            <div class="piatto-card">
+                <div class="piatto-header">
+                    <h3 class="piatto-nome"><?= htmlspecialchars($p['Nome']) ?></h3>
+                    <span class="piatto-prezzo"><?= number_format($p['Prezzo'], 2) ?> €</span>
+                </div>
+                <p class="piatto-descrizione"><?= htmlspecialchars($p['Descrizione']) ?></p>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <?php endif; ?>
 
 </section>
 
@@ -58,15 +117,6 @@ $piatti = $pdo->query("SELECT Nome, Descrizione, Prezzo FROM PIATTO ORDER BY Pre
         <p>© <?= date('Y') ?> La Maison</p>
     </div>
 </footer>
-
-<script>
-    document.getElementById('hamburger').addEventListener('click', () => {
-        document.getElementById('mobileOverlay').classList.add('attivo');
-    });
-    document.getElementById('chiudiMobile').addEventListener('click', () => {
-        document.getElementById('mobileOverlay').classList.remove('attivo');
-    });
-</script>
 
 </body>
 </html>

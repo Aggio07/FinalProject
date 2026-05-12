@@ -19,7 +19,6 @@ if (session_status() === PHP_SESSION_NONE) {
     <ul class="navbar-links">
         <li><a href="../index.php">Home</a></li>
         <li><a href="menu.php">Menù</a></li>
-        <li><a href="prenotaTavolo.php">Prenota</a></li>
         <li><a href="recensioni.php">Recensioni</a></li>
         <li><a href="shop.php">Negozio</a></li>
     </ul>
@@ -31,22 +30,4 @@ if (session_status() === PHP_SESSION_NONE) {
             <a href="../autenticazione/login.php" class="navbar-btn">Accedi</a>
         <?php endif; ?>
     </div>
-    <button class="navbar-hamburger" id="hamburger">☰</button>
 </nav>
-
-<div class="mobile-overlay" id="mobileOverlay">
-    <nav class="mobile-menu">
-        <a href="../index.php">Home</a>
-        <a href="menu.php">Menù</a>
-        <a href="prenotaTavolo.php">Prenota</a>
-        <a href="recensioni.php">Recensioni</a>
-        <a href="shop.php">Negozio</a>
-        <hr>
-        <?php if (isset($_SESSION['idUtente'])): ?>
-            <a href="../autenticazione/logout.php">Esci</a>
-        <?php else: ?>
-            <a href="../autenticazione/login.php">Accedi</a>
-        <?php endif; ?>
-        <button id="chiudiMobile">Chiudi</button>
-    </nav>
-</div>

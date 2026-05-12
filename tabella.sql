@@ -43,6 +43,7 @@ CREATE TABLE PIATTO (
   Nome VARCHAR(255),
   Descrizione TEXT,
   Prezzo DECIMAL(10,2),
+  Tipo VARCHAR(50) DEFAULT 'Primo',
   PRIMARY KEY (IdPiatto),
   FOREIGN KEY (IdMenu) REFERENCES MENU(IdMenu)
 );
@@ -61,16 +62,6 @@ CREATE TABLE PIATTO_INGREDIENTE (
   FOREIGN KEY (IdIngrediente) REFERENCES INGREDIENTE(IdIngrediente)
 );
 
-CREATE TABLE TAVOLO (
-  IdTavolo INT AUTO_INCREMENT,
-  IdRistorante INT,
-  NumeroTavolo INT,
-  Materiale VARCHAR(255),
-  Stato BOOLEAN DEFAULT FALSE,
-  PRIMARY KEY (IdTavolo),
-  FOREIGN KEY (IdRistorante) REFERENCES RISTORANTE(IdRistorante)
-);
-
 CREATE TABLE ORARIO (
   IdOrario INT AUTO_INCREMENT,
   IdRistorante INT,
@@ -79,19 +70,6 @@ CREATE TABLE ORARIO (
   OrarioChiusura TIME,
   PRIMARY KEY (IdOrario),
   FOREIGN KEY (IdRistorante) REFERENCES RISTORANTE(IdRistorante)
-);
-
-CREATE TABLE PRENOTAZIONE (
-  IdPrenotazione INT AUTO_INCREMENT,
-  IdUtente INT,
-  IdTavolo INT,
-  DataPrenot DATE,
-  OraPrenot TIME,
-  NumeroPersone INT,
-  Nominativo VARCHAR(255),
-  PRIMARY KEY (IdPrenotazione),
-  FOREIGN KEY (IdUtente) REFERENCES UTENTE(IdUtente),
-  FOREIGN KEY (IdTavolo) REFERENCES TAVOLO(IdTavolo)
 );
 
 CREATE TABLE RECENSIONE (
@@ -117,7 +95,6 @@ CREATE TABLE PRODOTTO (
   FOREIGN KEY (IdRistorante) REFERENCES RISTORANTE(IdRistorante)
 );
 
--- --------------------------------------------------------
 
 INSERT INTO RISTORANTE (Nome, Email, Telefono, Citta, Via)
 VALUES ('La Maison', 'info@lamaison.it', '023456789', 'Milano', 'Via Eleganza 10');
@@ -133,26 +110,46 @@ VALUES
 (1, 'Degustazione', 'Carta', 'Grande'),
 (1, 'Alla carta',   'Carta', 'Standard');
 
-INSERT INTO PIATTO (IdMenu, Nome, Descrizione, Prezzo)
-VALUES
-(1, 'Risotto allo Zafferano', 'Risotto cremoso con zafferano',            18.00),
-(1, 'Filetto di Manzo',       'Filetto di manzo con salsa al vino rosso', 28.00),
-(2, 'Spaghetti al Pomodoro',  'Spaghetti con pomodoro fresco',            12.00),
-(2, 'Tiramisù',               'Dolce tradizionale italiano',               8.00);
+-- ANTIPASTI
+INSERT INTO PIATTO (IdMenu, Nome, Descrizione, Prezzo, Tipo) VALUES
+(2, 'Bruschetta al Pomodoro', 'Pane tostato con pomodoro fresco, basilico e olio EVO', 6.00, 'Antipasto'),
+(2, 'Carpaccio di Manzo', 'Fette sottili di manzo con rucola, grana e aceto balsamico', 12.00, 'Antipasto'),
+(2, 'Caprese', 'Mozzarella di bufala, pomodoro e basilico fresco', 9.00, 'Antipasto'),
+(2, 'Prosciutto e Melone', 'Prosciutto crudo di Parma con melone cantalupo', 10.00, 'Antipasto'),
+(2, 'Tagliere di Salumi', 'Selezione di salumi italiani con giardiniera', 14.00, 'Antipasto');
+
+-- PRIMI PIATTI
+INSERT INTO PIATTO (IdMenu, Nome, Descrizione, Prezzo, Tipo) VALUES
+(2, 'Spaghetti alla Carbonara', 'Pasta con guanciale, uova, pecorino romano', 13.00, 'Primo'),
+(2, 'Tagliatelle al Ragù', 'Pasta fresca all\'uovo con ragù di carne bolognese', 14.00, 'Primo'),
+(2, 'Risotto allo Zafferano', 'Risotto cremoso mantecato con zafferano italiano', 16.00, 'Primo'),
+(2, 'Risotto ai Funghi Porcini', 'Risotto con funghi porcini freschi e prezzemolo', 18.00, 'Primo'),
+(2, 'Penne all\'Arrabbiata', 'Penne con pomodoro, aglio, peperoncino', 11.00, 'Primo'),
+(2, 'Lasagne della Casa', 'Lasagne al forno con ragù e besciamella', 15.00, 'Primo');
+
+-- SECONDI PIATTI
+INSERT INTO PIATTO (IdMenu, Nome, Descrizione, Prezzo, Tipo) VALUES
+(2, 'Filetto di Manzo al Barolo', 'Filetto di manzo con riduzione di vino Barolo', 28.00, 'Secondo'),
+(2, 'Ossobuco alla Milanese', 'Ossobuco di vitello con risotto alla milanese', 24.00, 'Secondo'),
+(2, 'Tagliata di Manzo', 'Tagliata di manzo con rucola e scaglie di grana', 22.00, 'Secondo'),
+(2, 'Branzino al Forno', 'Branzino intero al forno con patate e olive', 20.00, 'Secondo'),
+(2, 'Saltimbocca alla Romana', 'Scaloppine di vitello con prosciutto e salvia', 19.00, 'Secondo'),
+(2, 'Pollo alla Cacciatora', 'Pollo in umido con pomodoro, olive e capperi', 17.00, 'Secondo');
+
+-- DOLCI
+INSERT INTO PIATTO (IdMenu, Nome, Descrizione, Prezzo, Tipo) VALUES
+(2, 'Tiramisù', 'Dolce al cucchiaio con mascarpone, caffè e cacao', 8.00, 'Dolce'),
+(2, 'Panna Cotta', 'Panna cotta con coulis di frutti di bosco', 7.00, 'Dolce'),
+(2, 'Cannoli Siciliani', 'Cannoli croccanti con ricotta e canditi', 8.50, 'Dolce'),
+(2, 'Cheesecake ai Frutti di Bosco', 'Cheesecake cremosa con composta di frutti di bosco', 9.00, 'Dolce'),
+(2, 'Profiteroles', 'Bignè con crema chantilly e cioccolato fondente', 8.00, 'Dolce'),
+(2, 'Torta della Nonna', 'Torta con crema pasticcera e pinoli', 7.50, 'Dolce');
 
 INSERT INTO INGREDIENTE (Nome)
 VALUES
 ('Riso'), ('Zafferano'), ('Manzo'), ('Vino Rosso'),
-('Pomodoro'), ('Pasta'), ('Mascarpone'), ('Uova');
-
-INSERT INTO PIATTO_INGREDIENTE (IdPiatto, IdIngrediente)
-VALUES (1,1),(1,2),(2,3),(2,4),(3,5),(3,6),(4,7),(4,8);
-
-INSERT INTO TAVOLO (IdRistorante, NumeroTavolo, Materiale, Stato)
-VALUES
-(1, 1, 'Legno', FALSE),
-(1, 2, 'Legno', FALSE),
-(1, 3, 'Marmo', FALSE);
+('Pomodoro'), ('Pasta'), ('Mascarpone'), ('Uova'),
+('Guanciale'), ('Pecorino'), ('Funghi Porcini'), ('Vitello');
 
 INSERT INTO ORARIO (IdRistorante, GiornoSett, OrarioApertura, OrarioChiusura)
 VALUES
@@ -161,17 +158,13 @@ VALUES
 (1, 'Mercoledì', '12:00:00', '23:00:00'),
 (1, 'Giovedì',   '12:00:00', '23:00:00'),
 (1, 'Venerdì',   '12:00:00', '00:00:00'),
-(1, 'Sabato',    '18:00:00', '00:00:00');
-
-INSERT INTO PRENOTAZIONE (IdUtente, IdTavolo, DataPrenot, OraPrenot, NumeroPersone, Nominativo)
-VALUES
-(1, 2, '2026-03-10', '20:00:00', 4, 'Mario Rossi'),
-(2, 1, '2026-03-11', '21:00:00', 2, 'Luca Bianchi');
+(1, 'Sabato',    '18:00:00', '00:00:00'),
+(1, 'Domenica',  '12:00:00', '23:00:00');
 
 INSERT INTO RECENSIONE (IdUtente, IdPiatto, Voto, Data, Testo, RispostaAdmin)
 VALUES
-(1, 1, 5, '2026-03-01', 'Risotto eccezionale, molto cremoso.', NULL),
-(2, 4, 4, '2026-03-02', 'Tiramisù ottimo, molto delicato.',    NULL);
+(1, 8, 5, '2026-03-01', 'Risotto eccezionale, molto cremoso.', NULL),
+(2, 19, 4, '2026-03-02', 'Tiramisù ottimo, molto delicato.', NULL);
 
 INSERT INTO PRODOTTO (IdRistorante, Nome, Descrizione, Prezzo)
 VALUES

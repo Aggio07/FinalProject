@@ -10,7 +10,6 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar scrolled" id="navbar">
     <a href="../index.php" class="navbar-logo">
         <img src="../CartellaImage/logo.png" alt="La Maison">
@@ -18,7 +17,6 @@
     <ul class="navbar-links">
         <li><a href="../index.php">Home</a></li>
         <li><a href="menu.php">Menù</a></li>
-        <li><a href="prenotaTavolo.php">Prenota</a></li>
         <li><a href="recensioni.php">Recensioni</a></li>
         <li><a href="shop.php" class="attivo">Negozio</a></li>
     </ul>
@@ -33,26 +31,7 @@
             <a href="../autenticazione/login.php" class="navbar-btn">Accedi</a>
         <?php endif; ?>
     </div>
-    <button class="navbar-hamburger" id="hamburger">☰</button>
 </nav>
-
-<!-- MENU MOBILE -->
-<div class="mobile-overlay" id="mobileOverlay">
-    <nav class="mobile-menu">
-        <a href="../index.php">Home</a>
-        <a href="menu.php">Menù</a>
-        <a href="prenotaTavolo.php">Prenota</a>
-        <a href="recensioni.php">Recensioni</a>
-        <a href="shop.php">Negozio</a>
-        <hr>
-        <?php if (isset($_SESSION['idUtente'])): ?>
-            <a href="../autenticazione/logout.php">Esci</a>
-        <?php else: ?>
-            <a href="../autenticazione/login.php">Accedi</a>
-        <?php endif; ?>
-        <button id="chiudiMobile">Chiudi</button>
-    </nav>
-</div>
 
 <section class="pagina-shop">
 
@@ -109,9 +88,7 @@
         </div>
         <div class="footer-col">
             <p class="footer-titolo">Il ristorante</p>
-            <a href="chiSiamo.php">Chi siamo</a>
             <a href="menu.php">Il menù</a>
-            <a href="prenotaTavolo.php">Prenota un tavolo</a>
         </div>
         <div class="footer-col">
             <p class="footer-titolo">Esplora</p>
@@ -131,15 +108,6 @@
         <p>© <?= date('Y') ?> La Maison. Tutti i diritti riservati.</p>
     </div>
 </footer>
-
-<script>
-    document.getElementById('hamburger').addEventListener('click', () => {
-        document.getElementById('mobileOverlay').classList.add('attivo');
-    });
-    document.getElementById('chiudiMobile').addEventListener('click', () => {
-        document.getElementById('mobileOverlay').classList.remove('attivo');
-    });
-</script>
 
 </body>
 </html>

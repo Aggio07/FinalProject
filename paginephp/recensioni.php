@@ -88,11 +88,11 @@ $piatti = $pdo->query("SELECT IdPiatto, Nome FROM PIATTO")->fetchAll();
                 <label class="rec-label">Testo</label>
                 <textarea name="testo" rows="4" required class="rec-input rec-textarea"></textarea>
             </div>
-            <button type="submit" class="rec-bottone">Pubblica</button>
+            <button type="submit" class="rec-bottone">Pubblica recensione</button>
         </form>
     </div>
     <?php else: ?>
-        <p class="rec-login"><a href="../autenticazione/login.php">Accedi</a> per recensire.</p>
+        <p class="rec-login"><a href="../autenticazione/login.php">Accedi</a> per lasciare una recensione.</p>
     <?php endif; ?>
 
 </section>
@@ -122,15 +122,6 @@ $piatti = $pdo->query("SELECT IdPiatto, Nome FROM PIATTO")->fetchAll();
         <p>© <?= date('Y') ?> La Maison</p>
     </div>
 </footer>
-
-<script>
-    document.getElementById('hamburger').addEventListener('click', () => {
-        document.getElementById('mobileOverlay').classList.add('attivo');
-    });
-    document.getElementById('chiudiMobile').addEventListener('click', () => {
-        document.getElementById('mobileOverlay').classList.remove('attivo');
-    });
-</script>
 
 </body>
 </html>
