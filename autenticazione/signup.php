@@ -15,10 +15,6 @@
         <h1 class="auth-titolo">Registrati</h1>
     </div>
 
-    <?php if (isset($_GET['errore'])): ?>
-        <div class="messaggio-errore">Email già registrata o errore. Riprova.</div>
-    <?php endif; ?>
-
     <form action="signupcheck.php" method="POST">
         <div class="riga-doppia">
             <div>

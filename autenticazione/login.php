@@ -15,10 +15,6 @@
         <h1 class="auth-titolo">Accedi</h1>
     </div>
 
-    <?php if (isset($_GET['errore'])): ?>
-        <div class="messaggio-errore">Email o password errate. Riprova.</div>
-    <?php endif; ?>
-
     <form action="logincheck.php" method="POST">
         <div class="riga">
             <label class="etichetta">Email</label>

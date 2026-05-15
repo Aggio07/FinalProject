@@ -18,20 +18,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $utente = $sth->fetch(PDO::FETCH_ASSOC);
 
-    if ($utente) {
-        $_SESSION["idUtente"] = $utente["IdUtente"];
-        $_SESSION["nome"]     = $utente["Nome"];
-        $_SESSION["ruolo"]    = $utente["Ruolo"];
+    $_SESSION["idUtente"] = $utente["IdUtente"];
+    $_SESSION["nome"]     = $utente["Nome"];
+    $_SESSION["ruolo"]    = $utente["Ruolo"];
 
-        if ($utente["Ruolo"] === "admin") {
-            header("Location: ../paginephp/statistiche.php");
-        } else {
-            header("Location: ../index.php");
-        }
-        exit();
+    if ($utente["Ruolo"] === "admin") {
+        header("Location: ../paginephp/statistiche.php");
     } else {
-        header("Location: login.php?errore=1");
-        exit();
+        header("Location: ../index.php");
     }
+    exit();
 }
 ?>
